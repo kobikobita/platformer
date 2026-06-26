@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="FirstGame"
+run/main_scene="uid://blefoip6fp2do"
 config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [display]
 
@@ -21,7 +26,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [physics]
 
