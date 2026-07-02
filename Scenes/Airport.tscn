@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://21ycud8h5vm2"]
 
-[ext_resource type="Texture2D" uid="uid://cdbxllv2rj5ql" path="res://Assets/free-city-backgrounds-pixel-art/city 2/7.png" id="2_jbilw"]
+[ext_resource type="Texture2D" uid="uid://cf33auhfcluvm" path="res://Assets/free-city-backgrounds-pixel-art/city 8/7.png" id="1_oguen"]
 [ext_resource type="Texture2D" uid="uid://dctfjiny1ole0" path="res://Assets/Terrain (16x16).png" id="3_knobp"]
 [ext_resource type="PackedScene" uid="uid://b8mwvpnafsvdo" path="res://Scenes/nicole idle.tscn" id="3_uprkc"]
+[ext_resource type="Script" uid="uid://4nj8n515k1k2" path="res://Scenes/toLose.gd" id="4_f03v4"]
+[ext_resource type="Script" uid="uid://d16wi8rnmxdxi" path="res://Scenes/toNext.gd" id="5_whl83"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdsqi"]
-texture = ExtResource("2_jbilw")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0t3nw"]
+texture = ExtResource("1_oguen")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgr6k"]
 texture = ExtResource("3_knobp")
@@ -163,15 +165,18 @@ sources/0 = SubResource("TileSetAtlasSource_fgr6k")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knobp"]
 size = Vector2(2869.25, 93)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubkfi"]
+size = Vector2(4151, 150)
+
 [node name="Node2D" type="Node2D" unique_id=864735104]
 position = Vector2(-3, 21)
 
 [node name="Panel" type="Panel" parent="." unique_id=279009143]
-offset_left = -1456.0
-offset_top = -908.0
-offset_right = 1544.0
-offset_bottom = 854.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_cdsqi")
+offset_left = -2119.0
+offset_top = -1269.0
+offset_right = 2535.0
+offset_bottom = 1385.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0t3nw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2087497297]
 position = Vector2(18, -24)
@@ -197,3 +202,21 @@ shape = SubResource("RectangleShape2D_knobp")
 position = Vector2(-1146, -225)
 rotation = -1.56618
 shape = SubResource("RectangleShape2D_knobp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1387487567]
+script = ExtResource("4_f03v4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=429997314]
+position = Vector2(252, 962)
+shape = SubResource("RectangleShape2D_ubkfi")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=834529586]
+script = ExtResource("5_whl83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1336037427]
+position = Vector2(1207.9999, -267)
+rotation = 1.5774387
+shape = SubResource("RectangleShape2D_ubkfi")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]

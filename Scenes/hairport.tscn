@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://6s0seqcj1tqw" path="res://Assets/free-city-backgrounds-pixel-art/city 7/7.png" id="2_d07ur"]
 [ext_resource type="Texture2D" uid="uid://dctfjiny1ole0" path="res://Assets/Terrain (16x16).png" id="3_q0e0y"]
+[ext_resource type="Script" uid="uid://4nj8n515k1k2" path="res://Scenes/toLose.gd" id="4_mg46u"]
 [ext_resource type="PackedScene" uid="uid://b8mwvpnafsvdo" path="res://Scenes/nicole idle.tscn" id="4_nljqe"]
+[ext_resource type="Script" uid="uid://dqurywcym308c" path="res://Scenes/toWin.gd" id="5_rnwbo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgr6k"]
 texture = ExtResource("3_q0e0y")
@@ -158,14 +160,17 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fgr6k")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knobp"]
-size = Vector2(2869.25, 93)
+size = Vector2(4837.055, 182.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t3nw"]
+size = Vector2(4151, 150)
 
 [node name="Node2D" type="Node2D" unique_id=866922855]
 position = Vector2(-3, 21)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1829044011]
-position = Vector2(-9, -26)
-scale = Vector2(1.49045, 1.4429)
+position = Vector2(277, 44.000046)
+scale = Vector2(1.6892354, 1.8572525)
 texture = ExtResource("2_d07ur")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1862143210]
@@ -185,5 +190,31 @@ rotation_smoothing_enabled = true
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1945515175]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=364369073]
-position = Vector2(6, -706)
+position = Vector2(251.99998, -826)
+scale = Vector2(0.9365203, 1)
 shape = SubResource("RectangleShape2D_knobp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=25909553]
+position = Vector2(-1257, -273)
+rotation = -1.5775633
+scale = Vector2(0.9365203, 1)
+shape = SubResource("RectangleShape2D_knobp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1590493105]
+script = ExtResource("4_mg46u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2032588224]
+position = Vector2(252, 962)
+shape = SubResource("RectangleShape2D_0t3nw")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1461288002]
+position = Vector2(-180, -5)
+script = ExtResource("5_rnwbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=2041138145]
+position = Vector2(1187, -261.00003)
+rotation = -1.5474384
+shape = SubResource("RectangleShape2D_0t3nw")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
