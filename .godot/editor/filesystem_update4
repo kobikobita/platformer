@@ -1,8 +1,2 @@
-res://Scenes/toLose.gd
 res://Scenes/Airport.tscn
-res://Scripts/nicole_idle.gd
-res://Scenes/hairport.tscn
-res://Scenes/change_scene.gd
-res://Scenes/toNext.gd
-res://Scenes/toWin.gd
-res://Scripts/player.gd
+res://Scenes/Lose.tscn
